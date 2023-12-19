@@ -5,14 +5,21 @@ package chess;
 
 import org.junit.jupiter.api.Test;
 
+import chess.modell.Board;
 import chess.viewController.Chess;
 
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.Map;
+import java.util.TreeMap;
+
 class ChessTest {
-    /*
-    @Test void appHasAGreeting() {
-        Chess classUnderTest = new Chess();
-        assertNotNull(classUnderTest.getGreeting(), "app should have a greeting");
-    } */
+
+    @Test
+    void BoardMap() {
+        Board board = new Board();
+        Map<String, String> map = board.returnBoardMap();
+        assertEquals("R", map.get("A1"));
+
+    }
 }

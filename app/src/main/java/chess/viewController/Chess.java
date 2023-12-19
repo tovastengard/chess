@@ -3,8 +3,12 @@ package chess.viewController;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import chess.modell.Board;
+
 
 public class Chess extends JFrame {
+
+    private Board board = new Board();
 
 
     public Chess() {
@@ -13,13 +17,7 @@ public class Chess extends JFrame {
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setResizable(false);
 
-        JPanel boardpanel = new BoardPanel();
-        JPanel rows = new Rows();
-        JPanel cols = new Cols();
-
-
-        add("West", rows);
-        add("South", cols);
+        JPanel boardpanel = new BoardPanel(board);
         add("Center", boardpanel);
 
         pack();
@@ -34,6 +32,6 @@ public class Chess extends JFrame {
     }
 
     public static void main(String[] args) {
-        System.out.println(new Chess().getGreeting());
+        Chess chess = new Chess();
     }
 }
