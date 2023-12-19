@@ -34,7 +34,7 @@ java {
 
 application {
     // Define the main class for the application.
-    mainClass = 'chess.view.Chess'
+    mainClass = 'chess.viewController.Chess'
 }
 
 tasks.named('test') {
