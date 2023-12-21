@@ -6,10 +6,8 @@ public class King implements Pieces {
     private String name;
     private String pos;
 
-    public King(String color, String pos) {
-        this.color = color;
-        name = color + "K";
-        this.pos = pos;
+    public King(String name) {
+        this.name = name;
     }
 
 
@@ -33,6 +31,9 @@ public class King implements Pieces {
         return false;
     }
 
+    public void setColor(String color) {
+        this.color = color;
+    }
 
     public String getColor() {
         return color;

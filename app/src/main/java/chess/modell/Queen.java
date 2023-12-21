@@ -6,10 +6,8 @@ public class Queen implements Pieces {
     private String name;
     private String pos;
 
-    public Queen(String color, String pos) {
-        this.color = color;
-        name = color + "Q";
-        this.pos = pos;
+    public Queen(String name) {
+        this.name = name;
     }
 
 
@@ -29,6 +27,9 @@ public class Queen implements Pieces {
         this.pos = pos;
     }
 
+    public void setColor(String color) {
+        this.color = color;
+    }
 
     public String getColor() {
         return color;

@@ -15,5 +15,7 @@ public interface Pieces {
 
     public boolean isEmptyPiece();
 
+    public void setColor(String color);
+
     
 }

@@ -6,10 +6,8 @@ public class Pawn implements Pieces{
     private String name;
     private String pos;
 
-    public Pawn(String color, String pos) {
-        this.color = color;
-        name = color + "P";
-        this.pos = pos;
+    public Pawn(String name) {
+        this.name = name;
     }
 
 
@@ -27,6 +25,10 @@ public class Pawn implements Pieces{
 
     public void setCurrentPos(String pos) {
         this.pos = pos;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
     }
 
     public boolean isEmptyPiece() {

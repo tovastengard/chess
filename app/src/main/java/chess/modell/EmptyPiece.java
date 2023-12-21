@@ -6,10 +6,8 @@ public class EmptyPiece implements Pieces {
     private String name;
     private String pos;
 
-    public EmptyPiece(String color, String pos) {
-        this.color = color;
-        name = color + "E";
-        this.pos = pos;
+    public EmptyPiece(String name) {
+        this.name = name;
     }
 
 
@@ -33,6 +31,8 @@ public class EmptyPiece implements Pieces {
         return true;
     }
 
+    public void setColor(String color) {
+    }
 
     public String getColor() {
         return color;

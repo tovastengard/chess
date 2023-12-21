@@ -6,6 +6,7 @@ package chess;
 import org.junit.jupiter.api.Test;
 
 import chess.modell.Board;
+import chess.modell.Pieces;
 import chess.viewController.Chess;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -18,9 +19,12 @@ class ChessTest {
     @Test
     void BoardMap() {
         Board board = new Board();
-        Map<String, String> map = board.returnBoardMap();
-        assertEquals("A1", map.get("R1"));
-        assertEquals("B1", map.get("P1"));
+        Map<String, Pieces> map = board.returnBoardMap();
+        assertEquals("R", map.get("A1").getName());
+        assertEquals("R", map.get("A8").getName());
+        assertEquals("P", map.get("B1").getName());
+        assertEquals("E", map.get("C1").getName());
+
 
     }
 }

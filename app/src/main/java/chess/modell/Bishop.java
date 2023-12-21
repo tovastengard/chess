@@ -6,10 +6,8 @@ public class Bishop implements Pieces {
     private String name;
     private String pos;
 
-    public Bishop(String color, String pos) {
-        this.color = color;
-        name = color + "B";
-        this.pos = pos;
+    public Bishop(String name) {
+        this.name = name;
     }
 
 
@@ -27,6 +25,10 @@ public class Bishop implements Pieces {
 
     public void setCurrentPos(String pos) {
         this.pos = pos;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
     }
 
     public boolean isEmptyPiece() {

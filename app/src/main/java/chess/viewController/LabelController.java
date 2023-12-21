@@ -25,20 +25,30 @@ public class LabelController extends MouseAdapter {
             moveNewPiece = true;
             return;
         }
-
         JLabel newPos = (JLabel) e.getSource();
 
-        if (isEmpty(newPos)) {
-            newPos.setText(prevPosition.getText());
-            prevPosition.setText(" ");
+        if (!isEmpty(prevPosition) && moveNewPiece && !samePiece(prevPosition, newPos) ) {
+            newPos.setIcon(prevPosition.getIcon());
+            prevPosition.setIcon(null);
             moveNewPiece = false;
-            return;
         }
     }
 
 
     private Boolean isEmpty(JLabel label) {
-        return label.getText().equals(" ");
+        try {
+            return label.getIcon() == null;
+        } catch (Exception e) {
+            return true;
+        }
+    }
+
+    private Boolean samePiece(JLabel label, JLabel other) {
+        try {
+            return label.getIcon() == other.getIcon();
+        } catch (Exception e) {
+            return true;
+        }
     }
     
 }

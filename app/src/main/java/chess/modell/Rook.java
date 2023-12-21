@@ -6,10 +6,8 @@ public class Rook implements Pieces{
     private String name;
     private String pos;
 
-    public Rook(String color, String pos) {
-        this.color = color;
-        name = color + "R";
-        this.pos = pos;
+    public Rook(String name) {
+        this.name = name;
     }
 
 
@@ -23,6 +21,10 @@ public class Rook implements Pieces{
 
     public Boolean canMove() {
         return true;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
     }
 
     public void setCurrentPos(String pos) {

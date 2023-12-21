@@ -6,10 +6,9 @@ public class Knight implements Pieces {
     private String name;
     private String pos;
 
-    public Knight(String color, String pos) {
-        this.color = color;
-        name = color + "Kn";
-        this.pos = pos;
+    //gets the name "H" for horse
+    public Knight(String name) {
+        this.name = name;
     }
 
 
@@ -19,6 +18,10 @@ public class Knight implements Pieces {
 
     public String getCurrentPos() {
         return pos;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
     }
 
     public Boolean canMove() {
