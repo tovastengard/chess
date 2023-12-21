@@ -19,7 +19,8 @@ class ChessTest {
     void BoardMap() {
         Board board = new Board();
         Map<String, String> map = board.returnBoardMap();
-        assertEquals("R", map.get("A1"));
+        assertEquals("A1", map.get("R1"));
+        assertEquals("B1", map.get("P1"));
 
     }
 }

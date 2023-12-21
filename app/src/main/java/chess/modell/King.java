@@ -1,14 +1,14 @@
 package chess.modell;
 
-public class Queen implements Pieces {
+public class King implements Pieces {
 
     private String color;
     private String name;
     private String pos;
 
-    public Queen(String color, String pos) {
+    public King(String color, String pos) {
         this.color = color;
-        name = color + "Q";
+        name = color + "K";
         this.pos = pos;
     }
 
@@ -29,13 +29,13 @@ public class Queen implements Pieces {
         this.pos = pos;
     }
 
+    public boolean isEmptyPiece() {
+        return false;
+    }
+
 
     public String getColor() {
         return color;
-    }
-
-    public boolean isEmptyPiece() {
-        return false;
     }
     
 }

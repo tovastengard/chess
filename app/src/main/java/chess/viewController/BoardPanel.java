@@ -7,6 +7,7 @@ import java.awt.GridLayout;
 import java.awt.List;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
+import java.util.Observer;
 
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -26,6 +27,7 @@ public class BoardPanel extends JPanel {
         super(new GridLayout(8, 9, 2, 2));
         setPreferredSize(new Dimension(540, 540));
         this.board = board;
+        board.addObserver((obs, obj) -> updateBoard(board));
         ms = new LabelController(board, this);
         makeBoard();
         
@@ -59,13 +61,10 @@ public class BoardPanel extends JPanel {
         label.setText(piece);
     }
 
+    public void updateBoard(Board board) {
 
+    }
 
-
-
-
-
-    
 
     
 }
