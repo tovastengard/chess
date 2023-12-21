@@ -29,12 +29,11 @@ public class BoardPanel extends JPanel {
         super(new GridLayout(8, 9, 2, 2));
         setPreferredSize(new Dimension(540, 540));
         this.board = board;
-        board.addObserver((obs, obj) -> updateBoard(board));
+       // board.addObserver((obs, obj) -> updateBoard(board));
         ms = new LabelController(board, this);
         makeBoard();
         
     }
-
 
 
     private void makeBoard() {
@@ -42,7 +41,7 @@ public class BoardPanel extends JPanel {
             JPanel square = new JPanel();
             square.setBackground(getSquareColor(i));
 
-            ImageIcon icon = findIcon(i);
+            ImageIcon icon = resizeImage(Util.findIcon(i), 60, 60);
             JLabel pieceLabel = new JLabel(icon, JLabel.CENTER);
             
             pieceLabel.setFont(new Font("Arial", Font.BOLD, 30));
@@ -61,83 +60,18 @@ public class BoardPanel extends JPanel {
         return (row + col) % 2 == 0 ? Color.WHITE : Color.GRAY;
     }
 
-
-    private void updateLabel(JLabel label, String piece) {
-        label.setText(piece);
-    }
-
-    public void updateBoard(Board board) {
-
-    }
-
-
-    private ImageIcon findIcon(int i) {
-
-        if (i > 7 && i < 16 ) {
-            return resizeImage(Constants.BLACK_PAWN, 60, 60);
-        }
-        
-        if (i > 47 && i < 56 ) {
-            return resizeImage(Constants.WHITE_PAWN, 60, 60);
-        }
-
-        if (i == 0 || i == 7) {
-            return resizeImage(Constants.BLACK_ROOK, 60, 60);
-        }
-
-        if (i == 56 || i == 63) {
-            return resizeImage(Constants.WHITE_ROOK, 60, 60);
-        }
-
-        if (i == 1 || i == 6) {
-            return resizeImage(Constants.BLACK_KNIGHT, 60, 60);
-        }
-
-        if (i == 57 || i == 62) {
-            return resizeImage(Constants.WHITE_KNIGHT, 60, 60);
-        }
-
-        if (i == 2 || i == 5) {
-            return resizeImage(Constants.BLACK_BISHOP, 60, 60);
-        }
-
-        if (i == 58 || i == 61) {
-            return resizeImage(Constants.WHITE_BISHOP, 60, 60);
-        }
-
-        if (i == 3) {
-            return resizeImage(Constants.BLACK_QUEEN, 60, 60);
-        }
-
-        if (i == 59) {
-            return resizeImage(Constants.WHITE_QUEEN, 60, 60);
-        }
-
-        if (i == 4) {
-            return resizeImage(Constants.BLACK_KING, 60, 60);
-        }
-
-        if (i == 60) {
-            return resizeImage(Constants.WHITE_KING, 60, 60);
-        }
-
-
-        return null;
-
-    }
     
     private ImageIcon resizeImage(String imagePath, int width, int height) {
 
-    try {
-        File file = new File(imagePath);
-        BufferedImage originalImage = ImageIO.read(file);
-        Image resultingImage = originalImage.getScaledInstance(width, height, Image.SCALE_SMOOTH);
-        return new ImageIcon(resultingImage);
-    } catch (IOException e) {
-        e.printStackTrace(); // Handle potential exceptions
-        return null;
-    }
-}
+        try {
+            File file = new File(imagePath);
+            BufferedImage originalImage = ImageIO.read(file);
+            Image resultingImage = originalImage.getScaledInstance(width, height, Image.SCALE_SMOOTH);
+            return new ImageIcon(resultingImage);
+            } catch (IOException e) {
+                return null;
+            }
+    }   
 
 
     
