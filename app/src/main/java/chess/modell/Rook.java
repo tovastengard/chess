@@ -8,6 +8,8 @@ public class Rook implements Pieces{
 
     public Rook(String name) {
         this.name = name;
+        setColor(name.charAt(0));
+        System.out.println("rook");
     }
 
 
@@ -19,12 +21,15 @@ public class Rook implements Pieces{
         return pos;
     }
 
-    public Boolean canMove() {
+    public Boolean canMove(String name) {
         return true;
     }
 
-    public void setColor(String color) {
-        this.color = color;
+    public void setColor(char color) {
+        switch (color) {
+            case 'W' -> this.color = "W";
+            default -> this.color = "B";
+        }
     }
 
     public void setCurrentPos(String pos) {

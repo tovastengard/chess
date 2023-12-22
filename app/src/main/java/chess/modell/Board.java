@@ -6,16 +6,15 @@ import java.util.TreeMap;
 
 public class Board extends Observable {
     
-    private String[][] startingPositions = {
-        {"BR", "BH", "BB", "BQ", "BK", "BB", "BH", "BR"},
-        {"BP", "BP", "BP", "BP", "BP", "BP", "BP", "BP"},
-        {" ", " ", " ", " ", " ", " ", " ", " "},
-        {" ", " ", " ", " ", " ", " ", " ", " "},
-        {" ", " ", " ", " ", " ", " ", " ", " "},
-        {" ", " ", " ", " ", " ", " ", " ", " "},
-        {"WP", "WP", "WP", "WP", "WP", "WP", "WP", "WP"},
-        {"WR", "WH", "WB", "WQ", "WK", "WB", "WH", "WR"}
-};
+    private String[] startingPositions = {
+        "br", "bh", "bb", "bq", "bk", "bb", "bh", "br",
+        "bp", "bp", "bp", "bp", "bp", "bp", "bp", "bp",
+        " ", " ", " ", " ", " ", " ", " ", " ",
+        " ", " ", " ", " ", " ", " ", " ", " ",
+        " ", " ", " ", " ", " ", " ", " ", " ",
+        " ", " ", " ", " ", " ", " ", " ", " ",
+        "wp", "wp", "wp", "wp", "wp", "wp", "wp", "wp",
+        "wr", "wh", "wb", "wq", "wk", "wb", "wh", "wr"};
 
     private String[] letters = {"A", "B", "C", "D", "E", "F", "G", "H"};
 
@@ -27,8 +26,7 @@ public class Board extends Observable {
         boardMap = createBoardMap();
     }
 
-
-    public String[][] returnBoard() {
+    public String[] returnBoard() {
         return startingPositions;   
     }
 
@@ -39,35 +37,29 @@ public class Board extends Observable {
 
     private TreeMap<String, Pieces> createBoardMap() {
         TreeMap<String, Pieces> map = new TreeMap<String, Pieces>();
-        for (int i = 1; i <= 8; i++) {
-            for (int j = 1; j <= 8; j++) {
-
-                Pieces piece = pf.makePiece(fromStartingPos(i, j, 1));
-                piece.setColor(fromStartingPos(i, j, 0));
-                piece.setCurrentPos(letters[i - 1] + String.valueOf(j));
-                map.put(letters[i - 1] + String.valueOf(j), piece);
-  
-            }
+        
+        for (int i = 0; i < 64; i++) {
+            Pieces piece = pf.makePiece(startingPositions[i]); 
+            piece.setCurrentPos(String.valueOf(i));
+            map.put(String.valueOf(i), piece);
         }
         return map;
 
     }
 
-    private String fromStartingPos(int i, int j, int sub) {
-        if ((startingPositions[i - 1][j - 1]).length() == 1) {
-            return "E";
+
+    public Boolean tryMovePiece(String from, String to) {
+        Pieces fromPiece = boardMap.get(from);
+        Pieces toPiece = boardMap.get(to);
+
+        if (fromPiece.canMove(to) && !from.equals(to)) {
+            boardMap.put(to, fromPiece);
+            boardMap.put(from, new EmptyPiece(to));
+            setChanged();
+            notifyObservers();
+            return true;
         }
-        return String.valueOf(startingPositions[i - 1][j - 1].charAt(sub));
+        return false;
     }
-
-    
-    /*/
-    public void updateMap(String piece, String pos) {
-        String prevPos = boardMap.get(piece);
-
-
-    } */
-
-
 
 }

@@ -10,18 +10,24 @@ import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Map;
+import java.util.TreeMap;
+
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import chess.modell.Board;
+import chess.modell.Pieces;
 
 public class BoardPanel extends JPanel {
 
     private Board board;
-    private ArrayList<JLabel> list = new ArrayList<JLabel>(64);
     private MouseListener ms;
+    private Map<String, ImageIcon> imageList = new TreeMap<String, ImageIcon>();
+    private ArrayList<IconLabel> list = new ArrayList<IconLabel>(64);
+
 
     
     public BoardPanel(Board board) {
@@ -29,28 +35,42 @@ public class BoardPanel extends JPanel {
         super(new GridLayout(8, 9, 2, 2));
         setPreferredSize(new Dimension(540, 540));
         this.board = board;
-       // board.addObserver((obs, obj) -> updateBoard(board));
+        board.addObserver((obs, obj) -> updateBoard());
         ms = new LabelController(board, this);
         makeBoard();
         
     }
 
 
+    private void updateBoard() {
+        Map<String, Pieces> map = board.returnBoardMap();
+        for (Map.Entry<String,Pieces> entry : map.entrySet()) {
+            updateLabel(list.get(Integer.valueOf(entry.getKey())), entry.getValue().getName());
+        }
+
+    }
+
+    private void updateLabel(IconLabel label, String icon) {
+        label.setIcon(imageList.get(icon));
+
+    }
+
+
     private void makeBoard() {
+
         for (int i = 0; i < 64; i++) {
             JPanel square = new JPanel();
             square.setBackground(getSquareColor(i));
 
             ImageIcon icon = resizeImage(Util.findIcon(i), 60, 60);
-            JLabel pieceLabel = new JLabel(icon, JLabel.CENTER);
-            
-            pieceLabel.setFont(new Font("Arial", Font.BOLD, 30));
-            pieceLabel.setPreferredSize(new Dimension(60, 60));
+            imageList.put(fromUtil(Util.findIcon(i)), icon);
 
+            IconLabel pieceLabel = new IconLabel(icon, String.valueOf(i));
+            
             square.add(pieceLabel);
-            list.add(pieceLabel);
             pieceLabel.addMouseListener(ms);
             add(square);
+            list.add(pieceLabel);
         }
     }
 
@@ -71,8 +91,15 @@ public class BoardPanel extends JPanel {
             } catch (IOException e) {
                 return null;
             }
-    }   
+    } 
 
-
+    private String fromUtil(String s) {
+        if (s.length() == 1) {
+            return " ";
+        }
+        return s.substring(7, 9);
+    }
+    
+    
     
 }

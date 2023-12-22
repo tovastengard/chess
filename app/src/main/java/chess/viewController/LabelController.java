@@ -9,7 +9,7 @@ public class LabelController extends MouseAdapter {
 
     private Board board;
     private BoardPanel boardPanel;
-    private JLabel prevPosition;
+    private IconLabel prevPosition;
     private Boolean moveNewPiece = false;
     
     public LabelController(Board board, BoardPanel boardPanel) {
@@ -20,18 +20,19 @@ public class LabelController extends MouseAdapter {
        
     public void mouseClicked(MouseEvent e) { 
 
-        if (!moveNewPiece && !isEmpty((JLabel) e.getSource())) {
-            prevPosition = (JLabel) e.getSource();
+        if (!moveNewPiece && !isEmpty((IconLabel) e.getSource())) {
+            prevPosition = (IconLabel) e.getSource();
             moveNewPiece = true;
             return;
         }
-        JLabel newPos = (JLabel) e.getSource();
 
-        if (!isEmpty(prevPosition) && moveNewPiece && !samePiece(prevPosition, newPos) ) {
-            newPos.setIcon(prevPosition.getIcon());
-            prevPosition.setIcon(null);
+        IconLabel newPos = (IconLabel) e.getSource();
+
+        if (!isEmpty(prevPosition) && board.tryMovePiece(prevPosition.getPos(), newPos.getPos()) && moveNewPiece ) {
             moveNewPiece = false;
         }
+
+
     }
 
 

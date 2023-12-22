@@ -10,17 +10,12 @@ public class EmptyPiece implements Pieces {
         this.name = name;
     }
 
-
     public String getName() {
         return name;
     }
 
     public String getCurrentPos() {
         return pos;
-    }
-
-    public Boolean canMove() {
-        return false;
     }
 
     public void setCurrentPos(String pos) {
@@ -31,11 +26,15 @@ public class EmptyPiece implements Pieces {
         return true;
     }
 
-    public void setColor(String color) {
+    public void setColor(char color) {
     }
 
     public String getColor() {
         return color;
+    }
+
+    public Boolean canMove(String to) {
+        return false;
     }
     
 }

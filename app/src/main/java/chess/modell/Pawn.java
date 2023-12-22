@@ -8,6 +8,7 @@ public class Pawn implements Pieces{
 
     public Pawn(String name) {
         this.name = name;
+        setColor(name.charAt(0));
     }
 
 
@@ -19,7 +20,7 @@ public class Pawn implements Pieces{
         return pos;
     }
 
-    public Boolean canMove() {
+    public Boolean canMove(String name) {
         return true;
     }
 
@@ -27,8 +28,11 @@ public class Pawn implements Pieces{
         this.pos = pos;
     }
 
-    public void setColor(String color) {
-        this.color = color;
+    public void setColor(char color) {
+        switch (color) {
+            case 'W' -> this.color = "W";
+            default -> this.color = "B";
+        }
     }
 
     public boolean isEmptyPiece() {

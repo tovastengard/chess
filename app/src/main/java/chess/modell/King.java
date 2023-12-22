@@ -8,6 +8,7 @@ public class King implements Pieces {
 
     public King(String name) {
         this.name = name;
+        setColor(name.charAt(0));
     }
 
 
@@ -19,7 +20,7 @@ public class King implements Pieces {
         return pos;
     }
 
-    public Boolean canMove() {
+    public Boolean canMove(String name) {
         return true;
     }
 
@@ -31,12 +32,17 @@ public class King implements Pieces {
         return false;
     }
 
-    public void setColor(String color) {
-        this.color = color;
+    public void setColor(char color) {
+        switch (color) {
+            case 'W' -> this.color = "W";
+            default -> this.color = "B";
+        }
     }
 
     public String getColor() {
         return color;
     }
+
+    
     
 }

@@ -6,27 +6,30 @@ public class PieceFactory {
     }
 
     public Pieces makePiece(String p) {
-        return
 
-            switch (p) {
-                case "R" -> new Rook(p);
+        try {
+            char token = p.charAt(1);
+            return
+            switch (token) {
+                case 'r' -> new Rook(p);
 
-                case "B" -> new Bishop(p);
+                case 'b' -> new Bishop(p);
 
-                case "Kn" -> new Knight(p);
+                case 'h' -> new Knight(p);
 
-                case "Q" -> new Queen(p); 
+                case 'q' -> new Queen(p); 
 
-                case "K" -> new King(p);
+                case 'k' -> new King(p);
 
-                case "P" -> new Pawn(p);
+                case 'p' -> new Pawn(p);
 
                 default -> new EmptyPiece(p);
 
-            }; 
+            };
 
-
-
+        } catch (Exception e) {
+            return new EmptyPiece(p);
+        }
 
     }
     

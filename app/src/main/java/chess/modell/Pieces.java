@@ -7,7 +7,7 @@ public interface Pieces {
     
     public String getCurrentPos();
 
-    public Boolean canMove();
+    public Boolean canMove(String name);
 
     public void setCurrentPos(String pos);
 
@@ -15,7 +15,7 @@ public interface Pieces {
 
     public boolean isEmptyPiece();
 
-    public void setColor(String color);
+    public void setColor(char color);
 
     
 }
