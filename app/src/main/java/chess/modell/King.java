@@ -42,7 +42,5 @@ public class King implements Pieces {
     public String getColor() {
         return color;
     }
-
-    
-    
+   
 }

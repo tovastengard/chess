@@ -4,6 +4,7 @@ import java.awt.Dimension;
 import java.awt.Font;
 
 import javax.swing.Icon;
+import javax.swing.ImageIcon;
 import javax.swing.JLabel;
 
 public class IconLabel extends JLabel {
@@ -29,6 +30,12 @@ public class IconLabel extends JLabel {
 
     public void newPos(String pos) {
         this.pos = pos;
+    }
+
+    public void setIcon2(ImageIcon image) {
+        setIcon(image);
+        this.image = image;
+        System.out.println("test");
     }
 
 }

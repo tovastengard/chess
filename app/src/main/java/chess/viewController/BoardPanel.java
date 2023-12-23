@@ -2,7 +2,6 @@ package chess.viewController;
 
 import java.awt.Color;
 import java.awt.Dimension;
-import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.Image;
 import java.awt.event.MouseListener;
@@ -15,7 +14,6 @@ import java.util.TreeMap;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 import chess.modell.Board;
@@ -29,7 +27,6 @@ public class BoardPanel extends JPanel {
     private ArrayList<IconLabel> list = new ArrayList<IconLabel>(64);
 
 
-    
     public BoardPanel(Board board) {
 
         super(new GridLayout(8, 9, 2, 2));
@@ -37,24 +34,20 @@ public class BoardPanel extends JPanel {
         this.board = board;
         board.addObserver((obs, obj) -> updateBoard());
         ms = new LabelController(board, this);
-        makeBoard();
-        
+        makeBoard();     
     }
-
 
     private void updateBoard() {
         Map<String, Pieces> map = board.returnBoardMap();
         for (Map.Entry<String,Pieces> entry : map.entrySet()) {
-            updateLabel(list.get(Integer.valueOf(entry.getKey())), entry.getValue().getName());
+            updateLabel(entry.getKey(), list.get(Integer.valueOf(entry.getKey())), entry.getValue().getName());
         }
-
     }
 
-    private void updateLabel(IconLabel label, String icon) {
-        label.setIcon(imageList.get(icon));
-
+    private void updateLabel(String newPos, IconLabel label, String icon) {
+        label.setIcon2(imageList.get(icon));
+        label.newPos(newPos);
     }
-
 
     private void makeBoard() {
 
@@ -80,9 +73,7 @@ public class BoardPanel extends JPanel {
         return (row + col) % 2 == 0 ? Color.WHITE : Color.GRAY;
     }
 
-    
     private ImageIcon resizeImage(String imagePath, int width, int height) {
-
         try {
             File file = new File(imagePath);
             BufferedImage originalImage = ImageIO.read(file);
@@ -99,7 +90,5 @@ public class BoardPanel extends JPanel {
         }
         return s.substring(7, 9);
     }
-    
-    
-    
+        
 }

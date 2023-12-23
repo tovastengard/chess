@@ -16,8 +16,7 @@ public class LabelController extends MouseAdapter {
         this.board = board;
         this.boardPanel = boardPanel;
     }
-
-       
+   
     public void mouseClicked(MouseEvent e) { 
 
         if (!moveNewPiece && !isEmpty((IconLabel) e.getSource())) {
@@ -27,26 +26,14 @@ public class LabelController extends MouseAdapter {
         }
 
         IconLabel newPos = (IconLabel) e.getSource();
-
-        if (!isEmpty(prevPosition) && board.tryMovePiece(prevPosition.getPos(), newPos.getPos()) && moveNewPiece ) {
+        if (moveNewPiece && board.tryMovePiece(prevPosition.getPos(), newPos.getPos())) {
             moveNewPiece = false;
         }
-
-
     }
-
 
     private Boolean isEmpty(JLabel label) {
         try {
             return label.getIcon() == null;
-        } catch (Exception e) {
-            return true;
-        }
-    }
-
-    private Boolean samePiece(JLabel label, JLabel other) {
-        try {
-            return label.getIcon() == other.getIcon();
         } catch (Exception e) {
             return true;
         }

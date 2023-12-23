@@ -9,7 +9,6 @@ public class Rook implements Pieces{
     public Rook(String name) {
         this.name = name;
         setColor(name.charAt(0));
-        System.out.println("rook");
     }
 
 
