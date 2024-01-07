@@ -18,7 +18,7 @@ public class Board extends Observable {
 
     private String[] letters = {"A", "B", "C", "D", "E", "F", "G", "H"};
 
-    private Map<String, Pieces> boardMap;
+    private Map<String, Piece> boardMap;
     private PieceFactory pf = new PieceFactory();
 
 
@@ -30,16 +30,16 @@ public class Board extends Observable {
         return startingPositions;   
     }
 
-    public Map<String, Pieces> returnBoardMap() {
+    public Map<String, Piece> returnBoardMap() {
         return boardMap;   
     }
 
 
-    private TreeMap<String, Pieces> createBoardMap() {
-        TreeMap<String, Pieces> map = new TreeMap<String, Pieces>();
+    private TreeMap<String, Piece> createBoardMap() {
+        TreeMap<String, Piece> map = new TreeMap<String, Piece>();
         
         for (int i = 0; i < 64; i++) {
-            Pieces piece = pf.makePiece(startingPositions[i]); 
+            Piece piece = pf.makePiece(startingPositions[i]); 
             piece.setCurrentPos(String.valueOf(i));
             map.put(String.valueOf(i), piece);
         }
@@ -49,10 +49,10 @@ public class Board extends Observable {
 
 
     public Boolean tryMovePiece(String from, String to) {
-        Pieces fromPiece = boardMap.get(from);
-        Pieces toPiece = boardMap.get(to);
+        Piece fromPiece = boardMap.get(from);
+        Piece toPiece = boardMap.get(to);
 
-        if (fromPiece.canMove(to, null) && !from.equals(to)) {
+        if (fromPiece.canMove(this, null) && !from.equals(to)) {
             boardMap.put(to, fromPiece);
             boardMap.put(from, new EmptyPiece(to));
             setChanged();

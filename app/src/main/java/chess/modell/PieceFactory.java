@@ -5,7 +5,7 @@ public class PieceFactory {
     PieceFactory() {
     }
 
-    public Pieces makePiece(String p) {
+    public Piece makePiece(String p) {
 
         try {
             char token = p.charAt(1);

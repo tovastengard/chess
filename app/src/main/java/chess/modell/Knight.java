@@ -1,6 +1,6 @@
 package chess.modell;
 
-public class Knight implements Pieces {
+public class Knight implements Piece {
 
     private String color;
     private String name;
@@ -28,7 +28,7 @@ public class Knight implements Pieces {
         }
     }
 
-    public Boolean canMove(String name, Board board) {
+    public Boolean canMove(Board board, Piece other) {
         return true;
     }
 

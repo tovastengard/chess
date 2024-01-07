@@ -1,6 +1,6 @@
 package chess.modell;
 
-public class King implements Pieces {
+public class King implements Piece {
 
     private String color;
     private String name;
@@ -20,7 +20,7 @@ public class King implements Pieces {
         return pos;
     }
 
-    public Boolean canMove(String name, Board board) {
+    public Boolean canMove(Board board, Piece other) {
         return true;
     }
 

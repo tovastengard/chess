@@ -1,13 +1,13 @@
 package chess.modell;
 
-public interface Pieces {
+public interface Piece {
 
 
     public String getName();
     
     public String getCurrentPos();
 
-    public Boolean canMove(String name, Board board);
+    public Boolean canMove(Board board, Piece other);
 
     public void setCurrentPos(String pos);
 

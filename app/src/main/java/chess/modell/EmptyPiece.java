@@ -1,6 +1,6 @@
 package chess.modell;
 
-public class EmptyPiece implements Pieces {
+public class EmptyPiece implements Piece {
 
     private String color;
     private String name;
@@ -33,7 +33,7 @@ public class EmptyPiece implements Pieces {
         return color;
     }
 
-    public Boolean canMove(String to, Board board) {
+    public Boolean canMove(Board board, Piece other) {
         return false;
     }
     

@@ -17,7 +17,7 @@ import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 
 import chess.modell.Board;
-import chess.modell.Pieces;
+import chess.modell.Piece;
 
 public class BoardPanel extends JPanel {
 
@@ -38,8 +38,8 @@ public class BoardPanel extends JPanel {
     }
 
     private void updateBoard() {
-        Map<String, Pieces> map = board.returnBoardMap();
-        for (Map.Entry<String,Pieces> entry : map.entrySet()) {
+        Map<String, Piece> map = board.returnBoardMap();
+        for (Map.Entry<String,Piece> entry : map.entrySet()) {
             updateLabel(entry.getKey(), list.get(Integer.valueOf(entry.getKey())), entry.getValue().getName());
         }
     }
