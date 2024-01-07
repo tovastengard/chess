@@ -21,7 +21,7 @@ public class King implements Piece {
     }
 
     public Boolean canMove(Board board, Piece other) {
-        return true;
+        return !(other.getColor().equals(this.color));
     }
 
     public void setCurrentPos(String pos) {
@@ -34,7 +34,7 @@ public class King implements Piece {
 
     public void setColor(char color) {
         switch (color) {
-            case 'W' -> this.color = "W";
+            case 'w' -> this.color = "W";
             default -> this.color = "B";
         }
     }

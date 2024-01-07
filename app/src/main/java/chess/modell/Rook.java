@@ -21,12 +21,12 @@ public class Rook implements Piece{
     }
 
     public Boolean canMove(Board board, Piece other) {
-        return true;
+        return !(other.getColor().equals(this.color));
     }
 
     public void setColor(char color) {
         switch (color) {
-            case 'W' -> this.color = "W";
+            case 'w' -> this.color = "W";
             default -> this.color = "B";
         }
     }

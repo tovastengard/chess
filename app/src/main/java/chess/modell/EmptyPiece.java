@@ -8,6 +8,7 @@ public class EmptyPiece implements Piece {
 
     public EmptyPiece(String name) {
         this.name = name;
+        this.color = ""; 
     }
 
     public String getName() {
