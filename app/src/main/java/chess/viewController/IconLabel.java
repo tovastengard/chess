@@ -35,7 +35,6 @@ public class IconLabel extends JLabel {
     public void setIcon2(ImageIcon image) {
         setIcon(image);
         this.image = image;
-        System.out.println("test");
     }
 
 }

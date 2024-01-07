@@ -7,7 +7,7 @@ public interface Pieces {
     
     public String getCurrentPos();
 
-    public Boolean canMove(String name);
+    public Boolean canMove(String name, Board board);
 
     public void setCurrentPos(String pos);
 

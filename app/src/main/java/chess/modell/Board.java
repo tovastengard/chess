@@ -52,7 +52,7 @@ public class Board extends Observable {
         Pieces fromPiece = boardMap.get(from);
         Pieces toPiece = boardMap.get(to);
 
-        if (fromPiece.canMove(to) && !from.equals(to)) {
+        if (fromPiece.canMove(to, null) && !from.equals(to)) {
             boardMap.put(to, fromPiece);
             boardMap.put(from, new EmptyPiece(to));
             setChanged();

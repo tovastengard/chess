@@ -33,7 +33,7 @@ public class EmptyPiece implements Pieces {
         return color;
     }
 
-    public Boolean canMove(String to) {
+    public Boolean canMove(String to, Board board) {
         return false;
     }
     

@@ -32,6 +32,6 @@ public class Chess extends JFrame {
     }
 
     public static void main(String[] args) {
-        Chess chess = new Chess();
+        new Chess();
     }
 }

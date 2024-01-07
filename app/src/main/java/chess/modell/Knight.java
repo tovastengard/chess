@@ -28,7 +28,7 @@ public class Knight implements Pieces {
         }
     }
 
-    public Boolean canMove(String name) {
+    public Boolean canMove(String name, Board board) {
         return true;
     }
 

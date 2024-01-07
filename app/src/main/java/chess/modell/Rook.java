@@ -20,7 +20,7 @@ public class Rook implements Pieces{
         return pos;
     }
 
-    public Boolean canMove(String name) {
+    public Boolean canMove(String name, Board board) {
         return true;
     }
 
