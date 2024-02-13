@@ -7,7 +7,7 @@ public interface Piece {
     
     public int getCurrentPos();
 
-    public Boolean canMove(Board board, Piece other);
+    public Boolean canMove(Piece other);
 
     public void setCurrentPos(int pos);
 
@@ -15,7 +15,7 @@ public interface Piece {
 
     public boolean isEmptyPiece();
 
-    public void setColor(char color);
+    public Boolean canCapture(Piece other);
 
     
 }

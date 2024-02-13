@@ -27,15 +27,15 @@ public class EmptyPiece implements Piece {
         return true;
     }
 
-    public void setColor(char color) {
-    }
-
     public String getColor() {
         return color;
     }
 
-    public Boolean canMove(Board board, Piece other) {
+    public Boolean canMove(Piece other) {
         return false;
     }
-    
+
+    public Boolean canCapture(Piece other) {
+        return false;
+    }  
 }

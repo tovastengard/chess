@@ -8,9 +8,8 @@ public class Bishop implements Piece {
 
     public Bishop(String name) {
         this.name = name;
-        setColor(name.charAt(0));
+        this.color = name.charAt(0) == 'w' ? "W" : "B";
     }
-
 
     public String getName() {
         return name;
@@ -20,28 +19,23 @@ public class Bishop implements Piece {
         return pos;
     }
 
-    public Boolean canMove(Board board, Piece other) {
+    public Boolean canMove(Piece other) {
         return !(other.getColor().equals(this.color));
+    }
+
+    public Boolean canCapture(Piece other) {
+        return true;
     }
 
     public void setCurrentPos(int pos) {
         this.pos = pos;
     }
 
-    public void setColor(char color) {
-        switch (color) {
-            case 'w' -> this.color = "W";
-            default -> this.color = "B";
-        }
-    }
-
     public boolean isEmptyPiece() {
         return false;
     }
 
-
     public String getColor() {
         return color;
-    }
-    
+    } 
 }

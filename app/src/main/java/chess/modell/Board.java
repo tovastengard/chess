@@ -49,13 +49,19 @@ public class Board extends Observable {
 
 
     public Boolean tryMovePiece(String from, String to) {
-        System.out.println(from + " " + to);
         Piece fromPiece = boardMap.get(from);
         Piece toPiece = boardMap.get(to);
+        System.out.println(from + " " + to);
 
-        if (fromPiece.canMove(this, toPiece)) {
+        if (fromPiece.canMove(toPiece) || fromPiece.canCapture(toPiece)) {
+
+            fromPiece.setCurrentPos(Integer.valueOf(to));
+            Piece newEmpty = new EmptyPiece(" ");
+            newEmpty.setCurrentPos(Integer.valueOf(from));
+            
             boardMap.put(to, fromPiece);
-            boardMap.put(from, new EmptyPiece(to));
+            boardMap.put(from, newEmpty);
+    
             setChanged();
             notifyObservers();
             return true;
