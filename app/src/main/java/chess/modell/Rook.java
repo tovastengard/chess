@@ -4,7 +4,7 @@ public class Rook implements Piece{
 
     private String color;
     private String name;
-    private String pos;
+    private int pos;
 
     public Rook(String name) {
         this.name = name;
@@ -16,7 +16,7 @@ public class Rook implements Piece{
         return name;
     }
 
-    public String getCurrentPos() {
+    public int getCurrentPos() {
         return pos;
     }
 
@@ -31,7 +31,7 @@ public class Rook implements Piece{
         }
     }
 
-    public void setCurrentPos(String pos) {
+    public void setCurrentPos(int pos) {
         this.pos = pos;
     }
 

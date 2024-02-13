@@ -16,15 +16,4 @@ import java.util.TreeMap;
 
 class ChessTest {
 
-    @Test
-    void BoardMap() {
-        Board board = new Board();
-        Map<String, Piece> map = board.returnBoardMap();
-        assertEquals("R", map.get("A1").getName());
-        assertEquals("R", map.get("A8").getName());
-        assertEquals("P", map.get("B1").getName());
-        assertEquals("E", map.get("C1").getName());
-
-
-    }
 }

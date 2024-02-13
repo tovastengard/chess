@@ -16,7 +16,7 @@ public class Board extends Observable {
         "wp", "wp", "wp", "wp", "wp", "wp", "wp", "wp",
         "wr", "wh", "wb", "wq", "wk", "wb", "wh", "wr"};
 
-    private String[] letters = {"A", "B", "C", "D", "E", "F", "G", "H"};
+    //private String[] letters = {"A", "B", "C", "D", "E", "F", "G", "H"};
 
     private Map<String, Piece> boardMap;
     private PieceFactory pf = new PieceFactory();
@@ -40,7 +40,7 @@ public class Board extends Observable {
         
         for (int i = 0; i < 64; i++) {
             Piece piece = pf.makePiece(startingPositions[i]); 
-            piece.setCurrentPos(String.valueOf(i));
+            piece.setCurrentPos(i);
             map.put(String.valueOf(i), piece);
         }
         return map;
@@ -49,6 +49,7 @@ public class Board extends Observable {
 
 
     public Boolean tryMovePiece(String from, String to) {
+        System.out.println(from + " " + to);
         Piece fromPiece = boardMap.get(from);
         Piece toPiece = boardMap.get(to);
 

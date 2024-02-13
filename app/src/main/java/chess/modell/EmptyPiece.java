@@ -4,7 +4,7 @@ public class EmptyPiece implements Piece {
 
     private String color;
     private String name;
-    private String pos;
+    private int pos;
 
     public EmptyPiece(String name) {
         this.name = name;
@@ -15,11 +15,11 @@ public class EmptyPiece implements Piece {
         return name;
     }
 
-    public String getCurrentPos() {
+    public int getCurrentPos() {
         return pos;
     }
 
-    public void setCurrentPos(String pos) {
+    public void setCurrentPos(int pos) {
         this.pos = pos;
     }
 

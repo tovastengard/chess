@@ -5,11 +5,11 @@ public interface Piece {
 
     public String getName();
     
-    public String getCurrentPos();
+    public int getCurrentPos();
 
     public Boolean canMove(Board board, Piece other);
 
-    public void setCurrentPos(String pos);
+    public void setCurrentPos(int pos);
 
     public String getColor();
 

@@ -4,7 +4,7 @@ public class Bishop implements Piece {
 
     private String color;
     private String name;
-    private String pos;
+    private int pos;
 
     public Bishop(String name) {
         this.name = name;
@@ -16,7 +16,7 @@ public class Bishop implements Piece {
         return name;
     }
 
-    public String getCurrentPos() {
+    public int getCurrentPos() {
         return pos;
     }
 
@@ -24,7 +24,7 @@ public class Bishop implements Piece {
         return !(other.getColor().equals(this.color));
     }
 
-    public void setCurrentPos(String pos) {
+    public void setCurrentPos(int pos) {
         this.pos = pos;
     }
 

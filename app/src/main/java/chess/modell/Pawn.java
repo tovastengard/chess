@@ -4,7 +4,7 @@ public class Pawn implements Piece{
 
     private String color;
     private String name;
-    private String pos;
+    private int pos;
 
     public Pawn(String name) {
         this.name = name;
@@ -16,7 +16,7 @@ public class Pawn implements Piece{
         return name;
     }
 
-    public String getCurrentPos() {
+    public int getCurrentPos() {
         return pos;
     }
 
@@ -24,7 +24,12 @@ public class Pawn implements Piece{
         return !(other.getColor().equals(this.color));
     }
 
-    public void setCurrentPos(String pos) {
+    /* 
+    private Boolean isAttack(Piece other) {
+        return other.getCurrentPos().equals
+    } */
+
+    public void setCurrentPos(int pos) {
         this.pos = pos;
     }
 
